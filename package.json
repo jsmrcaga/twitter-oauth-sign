@@ -1,0 +1,18 @@
+{
+  "name": "twitter-oauth-sign",
+  "version": "1.0.0",
+  "description": "Module to Sign twitter requests and generate nonce",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "Jo Colina",
+  "license": "ISC",
+  "dependencies": {
+    "oauth-percent-encode": "^0.1.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  }
+}
