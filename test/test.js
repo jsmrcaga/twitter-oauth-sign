@@ -5,7 +5,7 @@ describe("Twitter Signature", function(){
 	it('Should be Equal to Twitter example at: https://dev.twitter.com/oauth/overview/creating-signatures', function(){
 		var final = 'tnnArxj06cWHq44gCs1OSKk/jLY=';
 		var method = 'POST';
-		var url = "https://api.twitter.com/1/statuses/update.json";
+		var url = "https://api.twitter.com/1/statuses/update.json?status=Hello%20Ladies%20%2B%20Gentlemen%2C%20a%20signed%20OAuth%20request!";
 		var params = {
 			include_entities: true,
 			oauth_consumer_key: 'xvz1evFS4wEEPTGEFPHBog',
@@ -14,7 +14,6 @@ describe("Twitter Signature", function(){
 			oauth_timestamp: 1318622958,
 			oauth_token: '370773112-GmHxMAgYyLbNEtIKZeRNFsMKPR9EyMZeS9weJAEb',
 			oauth_version: '1.0',
-			status: 'Hello Ladies + Gentlemen, a signed OAuth request!'
 		};
 
 		var keys = {
