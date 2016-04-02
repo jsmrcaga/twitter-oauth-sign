@@ -8,12 +8,11 @@ var config = {
 	oauth_version: '1.0'
 };
 
-var sign = function _twitterSign(method, url, paramsParent, keys) {
+var sign = function _twitterSign(method, url, params, keys) {
 	if(arguments.length < 4){
 		throw new Error("Only " + arguments.length + " arguments provided, 4 needed.");
 	}
 
-	var params = Object.duplicate(paramsParent);
 
 	var simple_url = url.split("?")[0];
 	var url_params = querystring.parse(url.split("?")[1]);
@@ -25,7 +24,7 @@ var sign = function _twitterSign(method, url, paramsParent, keys) {
 
 	if(!('consumer_secret' in keys)) throw new Error("Consumer secret is needed");
 
-	params = Object.sort(params);
+	params = Object.twitter_sign_sort(params);
 
 	var parameter_string = "";
 	for(var k in params){
@@ -71,24 +70,7 @@ module.exports = {
 	generateNonce: noncegen
 };
 
-Object.defineProperty(Object, "duplicate", {
-	enumerable: false,
-	writable: false,
-	value: function _duplicateObject(obj){
-		var res = {};
-		for(var p in obj){
-			if(obj[p] instanceof Object){
-				res[p] = Object.duplicate(obj[p]);
-			}else{
-				res[p] = obj[p];
-			}
-		}
-
-		return res;
-	}
-});
-
-Object.defineProperty(Object, "sort", {
+Object.defineProperty(Object, "twitter_sign_sort", {
 	enumerable: false,
 	value: function(obj){
 		var sortedKeys = Object.keys(obj).sort();
